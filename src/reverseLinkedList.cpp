@@ -16,8 +16,16 @@ NOTES:
 struct node {
 	int num;
 	struct node *next;
-};
+}*start=NULL;
 
 struct node * reverseLinkedList(struct node *head) {
-	return NULL;
+	struct node* post;
+	if (head == NULL)
+		return NULL;
+	if (head->next == NULL)
+		return head;
+	post = reverseLinkedList(head->next);
+	head->next->next = head;
+	head->next = NULL;
+	return post;
 }
